@@ -87,12 +87,14 @@ assert(nargout <= 3,'To many output arguments.')
 OPT.symbol = upper(symbol);
 OPT.interval = interval;
 
+tZone = 'local'; % by default
+
 if nargin == 3
     
     validateattributes(varargin{1},{'datetime','double'},{'row','numel',2})
     t = varargin{1};
     
-    tZone = 'local'; % by default
+    
     
     if isa(varargin{1},'datetime')
         

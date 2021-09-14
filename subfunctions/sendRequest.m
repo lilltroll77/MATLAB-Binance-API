@@ -28,6 +28,12 @@ arguments
     OPT.xmapikey     (1,1) logical = false
 end
 
+persistent HTTPOptions
+if( isempty(HTTPOptions))
+    HTTPOptions=http.HTTPOptions('ConnectTimeout', 30);
+end
+
+
 import matlab.net.*
 
 % Use authentication when structure contains username field
@@ -80,7 +86,7 @@ else
     
 end
 
-response = request.send(URL);
+response = request.send(URL ,  HTTPOptions);
 
 manageErrors(response,s)
 
