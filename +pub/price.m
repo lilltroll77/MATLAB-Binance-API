@@ -13,7 +13,7 @@ endPoint = '/api/v3/ticker/price';
 
 if nargin == 0
     
-    p = webread([getBaseURL endPoint]);
+    p = webread([getBaseURL endPoint],weboptions('Timeout',15));
 
 else
     
@@ -25,6 +25,6 @@ else
     QP = matlab.net.QueryParameter(s);
     queryString = QP.char;
     
-    p = webread([getBaseURL endPoint '?' queryString]);    
+    p = webread([getBaseURL endPoint '?' queryString] , weboptions('Timeout',15));    
  
 end
